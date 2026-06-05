@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)file:///C:/Users/m.roenko/Downloads/code_artifact%20(3).html -->
+<html lang="uk"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор Табличок "Не паркувати"</title>
+    <script src="./Генератор Табличок _Не паркувати__files/saved_resource"></script>
+    <link href="./Генератор Табличок _Не паркувати__files/css2" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-impact {
+            font-family: 'Oswald', 'Inter', sans-serif;
+        }
+        
+        /* MONOCHROME SPECIFIC OVERRIDES */
+        .print-mono {
+            border-color: #000000 !important;
+            background-color: #ffffff !important;
+        }
+        .print-mono #sign-text-header {
+            color: #000000 !important;
+        }
+        .print-mono #sign-text-main {
+            color: #000000 !important;
+        }
+        .print-mono #sign-text-sub {
+            color: #000000 !important;
+        }
+        .print-mono .sign-bottom-bar {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+        }
+        .print-mono .sign-bottom-bar p {
+            color: #ffffff !important;
+        }
+        .print-mono .sign-divider {
+            border-color: #000000 !important;
+        }
+        .print-mono #sign-arrow-container {
+            color: #000000 !important;
+        }
+
+        /* PRINT STYLING */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #sign-print-area, #sign-print-area * {
+                visibility: visible;
+            }
+            #sign-print-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: auto;
+                border: none !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.bottom-2{bottom:0.5rem}.left-2{left:0.5rem}.left-6{left:1.5rem}.right-2{right:0.5rem}.top-2{top:0.5rem}.top-4{top:1rem}.mx-auto{margin-left:auto;margin-right:auto}.my-2{margin-top:0.5rem;margin-bottom:0.5rem}.my-auto{margin-top:auto;margin-bottom:auto}.mb-1{margin-bottom:0.25rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-auto{margin-top:auto}.block{display:block}.flex{display:flex}.grid{display:grid}.aspect-\[1\.414\/1\]{aspect-ratio:1.414/1}.h-10{height:2.5rem}.h-14{height:3.5rem}.h-3\.5{height:0.875rem}.h-5{height:1.25rem}.h-8{height:2rem}.h-\[1px\]{height:1px}.h-12{height:3rem}.min-h-\[500px\]{min-height:500px}.min-h-screen{min-height:100vh}.w-14{width:3.5rem}.w-2\.5{width:0.625rem}.w-3\.5{width:0.875rem}.w-5{width:1.25rem}.w-8{width:2rem}.w-full{width:100%}.w-12{width:3rem}.max-w-7xl{max-width:80rem}.max-w-\[550px\]{max-width:550px}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.-rotate-12{--tw-rotate:-12deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-rotate-45{--tw-rotate:-45deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-12{--tw-rotate:12deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.rotate-45{--tw-rotate:45deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-start{justify-content:flex-start}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.overflow-hidden{overflow:hidden}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-\[12px\]{border-width:12px}.border-b{border-bottom-width:1px}.border-b-\[3px\]{border-bottom-width:3px}.border-amber-500{--tw-border-opacity:1;border-color:rgb(245 158 11 / var(--tw-border-opacity, 1))}.border-black{--tw-border-opacity:1;border-color:rgb(0 0 0 / var(--tw-border-opacity, 1))}.border-blue-500{--tw-border-opacity:1;border-color:rgb(59 130 246 / var(--tw-border-opacity, 1))}.border-red-500{--tw-border-opacity:1;border-color:rgb(239 68 68 / var(--tw-border-opacity, 1))}.border-slate-400{--tw-border-opacity:1;border-color:rgb(148 163 184 / var(--tw-border-opacity, 1))}.border-slate-600{--tw-border-opacity:1;border-color:rgb(71 85 105 / var(--tw-border-opacity, 1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.border-slate-900{--tw-border-opacity:1;border-color:rgb(15 23 42 / var(--tw-border-opacity, 1))}.border-amber-400{--tw-border-opacity:1;border-color:rgb(251 191 36 / var(--tw-border-opacity, 1))}.bg-amber-500{--tw-bg-opacity:1;background-color:rgb(245 158 11 / var(--tw-bg-opacity, 1))}.bg-amber-950\/40{background-color:rgb(69 26 3 / 0.4)}.bg-blue-950\/40{background-color:rgb(23 37 84 / 0.4)}.bg-red-950\/40{background-color:rgb(69 10 10 / 0.4)}.bg-slate-300{--tw-bg-opacity:1;background-color:rgb(203 213 225 / var(--tw-bg-opacity, 1))}.bg-slate-500{--tw-bg-opacity:1;background-color:rgb(100 116 139 / var(--tw-bg-opacity, 1))}.bg-slate-700{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.bg-slate-700\/40{background-color:rgb(51 65 85 / 0.4)}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-slate-950{--tw-bg-opacity:1;background-color:rgb(2 6 23 / var(--tw-bg-opacity, 1))}.bg-slate-950\/40{background-color:rgb(2 6 23 / 0.4)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-slate-700\/80{background-color:rgb(51 65 85 / 0.8)}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-emerald-500{--tw-gradient-from:#10b981 var(--tw-gradient-from-position);--tw-gradient-to:rgb(16 185 129 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-green-600{--tw-gradient-to:#16a34a var(--tw-gradient-to-position)}.p-2{padding:0.5rem}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-3{padding-bottom:0.75rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-none{line-height:1}.leading-snug{line-height:1.375}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-amber-200{--tw-text-opacity:1;color:rgb(253 230 138 / var(--tw-text-opacity, 1))}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-blue-200{--tw-text-opacity:1;color:rgb(191 219 254 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-red-200{--tw-text-opacity:1;color:rgb(254 202 202 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity, 1))}.text-slate-100{--tw-text-opacity:1;color:rgb(241 245 249 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-slate-950{--tw-text-opacity:1;color:rgb(2 6 23 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-amber-500\/20{--tw-shadow-color:rgb(245 158 11 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.shadow-emerald-500\/10{--tw-shadow-color:rgb(16 185 129 / 0.1);--tw-shadow:var(--tw-shadow-colored)}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-4{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-amber-400{--tw-ring-opacity:1;--tw-ring-color:rgb(251 191 36 / var(--tw-ring-opacity, 1))}.ring-amber-500{--tw-ring-opacity:1;--tw-ring-color:rgb(245 158 11 / var(--tw-ring-opacity, 1))}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:bg-amber-950\/60:hover{background-color:rgb(69 26 3 / 0.6)}.hover\:bg-blue-950\/60:hover{background-color:rgb(23 37 84 / 0.6)}.hover\:bg-red-950\/60:hover{background-color:rgb(69 10 10 / 0.6)}.hover\:bg-slate-600:hover{--tw-bg-opacity:1;background-color:rgb(71 85 105 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-950\/60:hover{background-color:rgb(2 6 23 / 0.6)}.hover\:from-emerald-600:hover{--tw-gradient-from:#059669 var(--tw-gradient-from-position);--tw-gradient-to:rgb(5 150 105 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-green-700:hover{--tw-gradient-to:#15803d var(--tw-gradient-to-position)}.hover\:shadow-emerald-500\/20:hover{--tw-shadow-color:rgb(16 185 129 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-amber-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(245 158 11 / var(--tw-ring-opacity, 1))}@media (min-width: 768px){.md\:flex-row{flex-direction:row}.md\:p-6{padding:1.5rem}.md\:text-right{text-align:right}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-base{font-size:1rem;line-height:1.5rem}.md\:text-xs{font-size:0.75rem;line-height:1rem}}@media (min-width: 1024px){.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}}</style></head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-slate-800 border-b border-slate-700 py-4 px-6 no-print">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 bg-amber-500 text-slate-950 rounded-xl font-bold text-xl shadow-lg shadow-amber-500/20">
+                    ⚠️
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight text-white">Конструктор Табличок</h1>
+                    <p class="text-xs text-slate-400">Професійний дизайн з можливістю додавання стрілок напрямку</p>
+                </div>
+            </div>
+            <div class="text-sm text-slate-400 text-center md:text-right">
+                Юридично вивірені шаблони відповідно до ПДР України (п. 15.10)
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 no-print">
+        
+        <!-- Left Column: Controls (5 Cols) -->
+        <section class="lg:col-span-5 flex flex-col gap-6">
+            
+            <!-- Template Selector -->
+            <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-xl">
+                <h2 class="text-lg font-bold mb-4 text-amber-400 flex items-center gap-2">
+                    <span>🎨</span> 1. Оберіть стиль друку
+                </h2>
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <button onclick="setTheme(&#39;mono&#39;)" id="btn-theme-mono" class="theme-btn border-2 border-slate-400 bg-slate-950/40 p-3 rounded-xl hover:bg-slate-950/60 transition text-center focus:outline-none ring-4 ring-amber-400">
+                        <span class="block text-2xl mb-1">⚫⚪</span>
+                        <span class="text-xs font-semibold text-slate-200">Чорно-білий (Економ)</span>
+                    </button>
+                    <button onclick="setTheme(&#39;danger&#39;)" id="btn-theme-danger" class="theme-btn border-2 border-red-500 bg-red-950/40 p-3 rounded-xl hover:bg-red-950/60 transition text-center focus:outline-none">
+                        <span class="block text-2xl mb-1">🔴</span>
+                        <span class="text-xs font-semibold text-red-200">Червоний (Увага!)</span>
+                    </button>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="setTheme(&#39;warning&#39;)" id="btn-theme-warning" class="theme-btn border-2 border-amber-500 bg-amber-950/40 p-3 rounded-xl hover:bg-amber-950/60 transition text-center focus:outline-none">
+                        <span class="block text-2xl mb-1">🟡</span>
+                        <span class="text-xs font-semibold text-amber-200">Жовтий (Суворий)</span>
+                    </button>
+                    <button onclick="setTheme(&#39;info&#39;)" id="btn-theme-info" class="theme-btn border-2 border-blue-500 bg-blue-950/40 p-3 rounded-xl hover:bg-blue-950/60 transition text-center focus:outline-none">
+                        <span class="block text-2xl mb-1">🔵</span>
+                        <span class="text-xs font-semibold text-blue-200">Синій (Сервісний)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Icon Selector -->
+            <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-xl">
+                <h2 class="text-lg font-bold mb-4 text-amber-400 flex items-center gap-2">
+                    <span>🚫</span> 2. Дорожні символи
+                </h2>
+                <div class="grid grid-cols-4 gap-3">
+                    <button onclick="setIcon(&#39;no-parking&#39;)" id="btn-icon-no-parking" class="icon-btn border border-slate-600 bg-slate-700 p-2.5 rounded-xl hover:bg-slate-600 transition flex flex-col items-center gap-1 ring-4 ring-amber-400 border-amber-400">
+                        <svg class="w-8 h-8" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" stroke="#ef4444" stroke-width="10" fill="#3b82f6"></circle>
+                            <line x1="22" y1="22" x2="78" y2="78" stroke="#ef4444" stroke-width="10"></line>
+                        </svg>
+                        <span class="text-[10px] text-slate-300">Нема стоянки</span>
+                    </button>
+                    <button onclick="setIcon(&#39;tow-truck&#39;)" id="btn-icon-tow-truck" class="icon-btn border border-slate-600 bg-slate-700 p-2.5 rounded-xl hover:bg-slate-600 transition flex flex-col items-center gap-1">
+                        <svg class="w-8 h-8 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        <span class="text-[10px] text-slate-300">Евакуатор</span>
+                    </button>
+                    <button onclick="setIcon(&#39;warning&#39;)" id="btn-icon-warning" class="icon-btn border border-slate-600 bg-slate-700 p-2.5 rounded-xl hover:bg-slate-600 transition flex flex-col items-center gap-1">
+                        <svg class="w-8 h-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        <span class="text-[10px] text-slate-300">Увага</span>
+                    </button>
+                    <button onclick="setIcon(&#39;none&#39;)" id="btn-icon-none" class="icon-btn border border-slate-600 bg-slate-700 p-2.5 rounded-xl hover:bg-slate-600 transition flex flex-col items-center justify-center gap-1">
+                        <span class="text-xl">❌</span>
+                        <span class="text-[10px] text-slate-300">Без іконки</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Arrow Selector -->
+            <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-xl">
+                <h2 class="text-lg font-bold mb-4 text-amber-400 flex items-center gap-2">
+                    <span>⬅️</span> 3. Вкажіть напрямок (Стрілка)
+                </h2>
+                <div class="grid grid-cols-5 gap-2">
+                    <button onclick="setArrow(&#39;none&#39;)" id="btn-arrow-none" class="arrow-btn border border-slate-600 bg-slate-700 p-2 rounded-xl hover:bg-slate-600 transition flex flex-col items-center justify-center ring-4 ring-amber-400 border-amber-400">
+                        <span class="text-lg">❌</span>
+                        <span class="text-[9px] text-slate-300 mt-1">Без стрілки</span>
+                    </button>
+                    <button onclick="setArrow(&#39;left&#39;)" id="btn-arrow-left" class="arrow-btn border border-slate-600 bg-slate-700 p-2 rounded-xl hover:bg-slate-600 transition flex flex-col items-center justify-center">
+                        <span class="text-lg">⬅️</span>
+                        <span class="text-[9px] text-slate-300 mt-1">Ліворуч</span>
+                    </button>
+                    <button onclick="setArrow(&#39;right&#39;)" id="btn-arrow-right" class="arrow-btn border border-slate-600 bg-slate-700 p-2 rounded-xl hover:bg-slate-600 transition flex flex-col items-center justify-center">
+                        <span class="text-lg">➡️</span>
+                        <span class="text-[9px] text-slate-300 mt-1">Праворуч</span>
+                    </button>
+                    <button onclick="setArrow(&#39;both&#39;)" id="btn-arrow-both" class="arrow-btn border border-slate-600 bg-slate-700 p-2 rounded-xl hover:bg-slate-600 transition flex flex-col items-center justify-center">
+                        <span class="text-lg">↔️</span>
+                        <span class="text-[9px] text-slate-300 mt-1">Обидва</span>
+                    </button>
+                    <button onclick="setArrow(&#39;down&#39;)" id="btn-arrow-down" class="arrow-btn border border-slate-600 bg-slate-700 p-2 rounded-xl hover:bg-slate-600 transition flex flex-col items-center justify-center">
+                        <span class="text-lg">⬇️</span>
+                        <span class="text-[9px] text-slate-300 mt-1">Вниз (Тут)</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Text Preset Selector -->
+            <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-xl">
+                <h2 class="text-lg font-bold mb-3 text-amber-400 flex items-center gap-2">
+                    <span>💡</span> 4. Шаблони тексту
+                </h2>
+                <div class="flex flex-col gap-2">
+                    <button onclick="applyPreset(&#39;classic&#39;)" id="btn-preset-classic" class="preset-btn w-full text-left p-2.5 rounded-xl border border-slate-600 hover:bg-slate-700 transition focus:outline-none ring-2 ring-amber-500 bg-slate-700/80">
+                        <span class="block text-xs font-bold text-amber-400">🔹 Класичний</span>
+                        <span class="block text-[10px] text-slate-300 mt-0.5">Увага! Виїзд транспорту. Прохання не паркувати...</span>
+                    </button>
+                    <button onclick="applyPreset(&#39;warning&#39;)" id="btn-preset-warning" class="preset-btn w-full text-left p-2.5 rounded-xl border border-slate-600 bg-slate-700/40 hover:bg-slate-700 transition focus:outline-none">
+                        <span class="block text-xs font-bold text-red-400">⚠️ Попереджувальний (Про пошкодження)</span>
+                        <span class="block text-[10px] text-slate-300 mt-0.5">Обережно! Виїзд великої техніки. Ризик пошкодження...</span>
+                    </button>
+                    <button onclick="applyPreset(&#39;strict&#39;)" id="btn-preset-strict" class="preset-btn w-full text-left p-2.5 rounded-xl border border-slate-600 bg-slate-700/40 hover:bg-slate-700 transition focus:outline-none">
+                        <span class="block text-xs font-bold text-slate-200">⚖️ Суворий юридичний</span>
+                        <span class="block text-[10px] text-slate-300 mt-0.5">Службовий виїзд цілодобово. Блокування заборонено...</span>
+                    </button>
+                    <button onclick="applyPreset(&#39;friendly&#39;)" id="btn-preset-friendly" class="preset-btn w-full text-left p-2.5 rounded-xl border border-slate-600 bg-slate-700/40 hover:bg-slate-700 transition focus:outline-none">
+                        <span class="block text-xs font-bold text-emerald-400">🤝 Сусідський (М'який)</span>
+                        <span class="block text-[10px] text-slate-300 mt-0.5">Шановні сусіди! Будь ласка, не блокуйте ворота...</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Customizer Form -->
+            <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 shadow-xl flex-grow flex flex-col gap-4">
+                <h2 class="text-lg font-bold text-amber-400 flex items-center gap-2">
+                    <span>✏️</span> 5. Редагування тексту
+                </h2>
+                
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Верхній заголовок</label>
+                    <input type="text" id="input-header" oninput="updateSign()" value="УВАГА!" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Головний заклик</label>
+                    <input type="text" id="input-main" oninput="updateSign()" value="ВИЇЗД ТРАНСПОРТУ" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Додаткова інформація</label>
+                    <input type="text" id="input-sub" oninput="updateSign()" value="ПРОХАННЯ НЕ ПАРКУВАТИ АВТОМОБІЛІ" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Юридичне посилання</label>
+                    <textarea id="input-law" oninput="updateSign()" rows="2" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">Стоянка заборонена відповідно до п. 15.10 (д) ПДР України.</textarea>
+                </div>
+            </div>
+
+            <!-- Print Action Buttons -->
+            <div class="flex gap-4">
+                <button onclick="printSign()" class="flex-1 py-4 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-slate-950 font-bold rounded-xl shadow-lg shadow-emerald-500/10 hover:shadow-emerald-500/20 transition-all text-center flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5 text-slate-950" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                    </svg>
+                    Роздрукувати А4 / А3
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Right Column: Visual Live Preview (7 Cols) -->
+        <section class="lg:col-span-7 flex flex-col justify-start items-center bg-slate-950 rounded-2xl border border-slate-800 p-6 shadow-inner min-h-[500px] relative">
+            <div class="absolute top-4 left-6 text-xs font-semibold text-slate-500 uppercase tracking-widest">Попередній перегляд знака</div>
+            
+            <div class="w-full flex justify-center items-center flex-grow mt-6">
+                <!-- Physical Sign Container (with realistic mounting screws & depth) -->
+                <div id="sign-print-area" class="w-full max-w-[550px] aspect-[1.414/1] bg-white rounded-2xl shadow-2xl border-[12px] p-6 flex flex-col justify-between text-slate-900 relative overflow-hidden transition-all duration-300 border-black print-mono">
+                    
+                    <!-- Decorative Screws on corner of plate -->
+                    <div class="absolute top-2 left-2 w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-400 flex items-center justify-center shadow-inner no-print">
+                        <div class="w-2.5 h-[1px] bg-slate-500 rotate-45"></div>
+                    </div>
+                    <div class="absolute top-2 right-2 w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-400 flex items-center justify-center shadow-inner no-print">
+                        <div class="w-2.5 h-[1px] bg-slate-500 -rotate-45"></div>
+                    </div>
+                    <div class="absolute bottom-2 left-2 w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-400 flex items-center justify-center shadow-inner no-print">
+                        <div class="w-2.5 h-[1px] bg-slate-500 -rotate-12"></div>
+                    </div>
+                    <div class="absolute bottom-2 right-2 w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-400 flex items-center justify-center shadow-inner no-print">
+                        <div class="w-2.5 h-[1px] bg-slate-500 rotate-12"></div>
+                    </div>
+
+                    <!-- Top Section with Header and Icons -->
+                    <div class="flex items-center justify-center gap-4 w-full border-b-[3px] border-slate-900 pb-3 sign-divider">
+                        <!-- Left Icon Area -->
+                        <div id="sign-icon-left" class="w-14 h-14 flex-shrink-0 flex items-center justify-center">
+                    <svg class="w-12 h-12 text-black" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="42" stroke="#000000" stroke-width="12" fill="#ffffff"></circle>
+                        <line x1="20" y1="20" x2="80" y2="80" stroke="#000000" stroke-width="12"></line>
+                    </svg>
+                </div>
+
+                        <!-- Header text -->
+                        <div class="text-center flex-grow">
+                            <h3 id="sign-text-header" class="text-sm md:text-base font-extrabold text-slate-900 tracking-wider uppercase">УВАГА!</h3>
+                        </div>
+
+                        <!-- Right Icon Area -->
+                        <div id="sign-icon-right" class="w-14 h-14 flex-shrink-0 flex items-center justify-center">
+                    <svg class="w-12 h-12 text-black" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="42" stroke="#000000" stroke-width="12" fill="#ffffff"></circle>
+                        <line x1="20" y1="20" x2="80" y2="80" stroke="#000000" stroke-width="12"></line>
+                    </svg>
+                </div>
+                    </div>
+
+                    <!-- Mid Section (Big Warning Statement) -->
+                    <div class="my-auto py-2 text-center flex flex-col items-center">
+                        <h2 id="sign-text-main" class="text-3xl md:text-4xl font-black font-impact tracking-tight leading-none uppercase my-2 text-black">ВИЇЗД ТРАНСПОРТУ</h2>
+                        <p id="sign-text-sub" class="text-base md:text-2xl font-black text-slate-950 tracking-wide mt-2 uppercase leading-snug">ПРОХАННЯ НЕ ПАРКУВАТИ АВТОМОБІЛІ</p>
+                        
+                        <!-- Dynamic Arrow Container -->
+                        <div id="sign-arrow-container" class="mt-3 h-10 flex items-center justify-center transition-all"></div>
+                    </div>
+
+                    <!-- Bottom Warning and Law Statement -->
+                    <div class="bg-slate-900 text-white rounded-lg p-3 text-center flex flex-col gap-1 shadow-inner mt-auto sign-bottom-bar">
+                        <p id="sign-text-law" class="text-[10px] md:text-xs text-slate-300 leading-snug font-medium italic">Стоянка заборонена відповідно до п. 15.10 (д) ПДР України.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Quick Legal Tip -->
+            <div class="w-full mt-4 bg-slate-900 border border-slate-800 p-4 rounded-xl text-xs text-slate-400">
+                <p class="font-bold text-amber-400 mb-1 flex items-center gap-1">💡 Порада для друку:</p>
+                Виберіть <strong class="text-white">Чорно-білий (Економ)</strong> стиль ліворуч. При виводі на друк у налаштуваннях принтера вкажіть <strong class="text-white">"Альбомна орієнтація" (Landscape)</strong> та встановіть <strong class="text-white">масштаб "Вписати в сторінку" (Fit to page)</strong>, щоб отримати максимальний розмір А4.
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Preset Themes Setup
+        const themes = {
+            mono: {
+                border: 'border-black',
+                mainText: 'text-black',
+                bodyClass: 'print-mono'
+            },
+            danger: {
+                border: 'border-red-600',
+                mainText: 'text-red-600',
+                bodyClass: ''
+            },
+            warning: {
+                border: 'border-amber-500',
+                mainText: 'text-amber-600',
+                bodyClass: ''
+            },
+            info: {
+                border: 'border-slate-900',
+                mainText: 'text-slate-900',
+                bodyClass: ''
+            }
+        };
+
+        // Text Presets Setup
+        const textPresets = {
+            classic: {
+                header: "УВАГА!",
+                main: "ВИЇЗД ТРАНСПОРТУ",
+                sub: "ПРОХАННЯ НЕ ПАРКУВАТИ АВТОМОБІЛІ",
+                law: "Стоянка заборонена відповідно до п. 15.10 (д) ПДР України."
+            },
+            warning: {
+                header: "ОБЕРЕЖНО!",
+                main: "ВИЇЗД ВЕЛИКОЇ ТЕХНІКИ",
+                sub: "РИЗИК ВИПАДКОВОГО ПОШКОДЖЕННЯ АВТО ПРИ МАНЕВРУВАННІ",
+                law: "Стоянка заборонена відповідно до п. 15.10 (д) ПДР України."
+            },
+            strict: {
+                header: "СЛУЖБОВИЙ ВИЇЗД!",
+                main: "ВОРОТА НЕ БЛОКУВАТИ",
+                sub: "ВИЇЗД ТРАНСПОРТУ ЗДІЙСНЮЄТЬСЯ ЦІЛОДОБОВО",
+                law: "Стоянка заборонена відповідно до п. 15.10 (д) ПДР України."
+            },
+            friendly: {
+                header: "ШАНОВНІ СУСІДИ!",
+                main: "БУДЬ ЛАСКА, НЕ ПАРКУЙТЕСЬ",
+                sub: "ЗАЛИШАЙТЕ ВИЇЗД ВІЛЬНИМ. ДЯКУЄМО ЗА РОЗУМІННЯ!",
+                law: "Стоянка заборонена відповідно до п. 15.10 (д) ПДР України."
+            }
+        };
+
+        // Current Interactive State
+        let currentTheme = 'mono';
+        let currentIcon = 'no-parking';
+        let currentArrow = 'none';
+
+        // Preset SVGs Generator based on theme
+        function getIconSvg(iconKey, themeKey) {
+            const isMono = themeKey === 'mono';
+            
+            const svgs = {
+                'no-parking': isMono ? `
+                    <svg class="w-12 h-12 text-black" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="42" stroke="#000000" stroke-width="12" fill="#ffffff"/>
+                        <line x1="20" y1="20" x2="80" y2="80" stroke="#000000" stroke-width="12"/>
+                    </svg>
+                ` : `
+                    <svg class="w-12 h-12" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="42" stroke="#dc2626" stroke-width="12" fill="#2563eb"/>
+                        <line x1="20" y1="20" x2="80" y2="80" stroke="#dc2626" stroke-width="12"/>
+                    </svg>
+                `,
+                'tow-truck': isMono ? `
+                    <svg class="w-12 h-12 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                ` : `
+                    <svg class="w-12 h-12 text-slate-950" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                `,
+                'warning': isMono ? `
+                    <svg class="w-12 h-12 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                ` : `
+                    <svg class="w-12 h-12 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                `,
+                'none': ''
+            };
+            return svgs[iconKey];
+        }
+
+        // Get Arrow SVG Based on Selection and Theme
+        function getArrowSvg(arrowKey, themeKey) {
+            const isMono = themeKey === 'mono';
+            const colorClass = isMono ? 'text-black' : themes[themeKey].mainText;
+
+            const svgs = {
+                'none': '',
+                'left': `
+                    <svg class="h-8 w-24 ${colorClass}" viewBox="0 0 100 30" fill="currentColor">
+                        <path d="M 10 15 L 30 5 V 11 H 90 V 19 H 30 V 25 Z" />
+                    </svg>
+                `,
+                'right': `
+                    <svg class="h-8 w-24 ${colorClass}" viewBox="0 0 100 30" fill="currentColor">
+                        <path d="M 90 15 L 70 5 V 11 H 10 V 19 H 70 V 25 Z" />
+                    </svg>
+                `,
+                'both': `
+                    <svg class="h-8 w-24 ${colorClass}" viewBox="0 0 100 30" fill="currentColor">
+                        <path d="M 10 15 L 25 5 V 11 H 75 V 5 L 90 15 L 75 25 V 19 H 25 V 25 Z" />
+                    </svg>
+                `,
+                'down': `
+                    <svg class="h-8 w-14 ${colorClass}" viewBox="0 0 100 30" fill="currentColor">
+                        <path d="M 50 28 L 35 15 H 43 V 2 H 57 V 15 H 65 Z" />
+                    </svg>
+                `
+            };
+            return svgs[arrowKey];
+        }
+
+        // Initialize state inside UI
+        function init() {
+            setTheme('mono');
+            setIcon('no-parking');
+            setArrow('none');
+            applyPreset('classic');
+        }
+
+        // Apply chosen text preset
+        function applyPreset(presetKey) {
+            const preset = textPresets[presetKey];
+            
+            document.getElementById('input-header').value = preset.header;
+            document.getElementById('input-main').value = preset.main;
+            document.getElementById('input-sub').value = preset.sub;
+            document.getElementById('input-law').value = preset.law;
+
+            updateSign();
+
+            // Toggle active visual highlight of preset buttons
+            document.querySelectorAll('.preset-btn').forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-amber-500', 'bg-slate-700/80');
+                btn.classList.add('bg-slate-700/40');
+            });
+            const activeBtn = document.getElementById(`btn-preset-${presetKey}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-700/40');
+                activeBtn.classList.add('ring-2', 'ring-amber-500', 'bg-slate-700/80');
+            }
+        }
+
+        // Apply theme styles to visual element
+        function setTheme(themeKey) {
+            currentTheme = themeKey;
+            
+            const sign = document.getElementById('sign-print-area');
+            const mainTxt = document.getElementById('sign-text-main');
+            
+            // Clear previous theme classes
+            sign.className = "w-full max-w-[550px] aspect-[1.414/1] bg-white rounded-2xl shadow-2xl border-[12px] p-6 flex flex-col justify-between text-slate-900 relative overflow-hidden transition-all duration-300";
+            mainTxt.className = "text-3xl md:text-4xl font-black font-impact tracking-tight leading-none uppercase my-2";
+
+            // Add new classes based on selection
+            sign.classList.add(themes[themeKey].border);
+            mainTxt.classList.add(themes[themeKey].mainText);
+            if (themes[themeKey].bodyClass) {
+                sign.classList.add(themes[themeKey].bodyClass);
+            }
+
+            // Reload current elements to match new theme
+            setIcon(currentIcon);
+            setArrow(currentArrow);
+
+            // Toggle active visual highlight of buttons
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                btn.classList.remove('ring-4', 'ring-amber-400');
+            });
+            const activeBtn = document.getElementById(`btn-theme-${themeKey}`);
+            if (activeBtn) activeBtn.classList.add('ring-4', 'ring-amber-400');
+        }
+
+        // Apply chosen icon
+        function setIcon(iconKey) {
+            currentIcon = iconKey;
+            
+            const leftContainer = document.getElementById('sign-icon-left');
+            const rightContainer = document.getElementById('sign-icon-right');
+
+            const svgContent = getIconSvg(iconKey, currentTheme);
+            leftContainer.innerHTML = svgContent;
+            rightContainer.innerHTML = svgContent;
+
+            // Highlight chosen icon button
+            document.querySelectorAll('.icon-btn').forEach(btn => {
+                btn.classList.remove('ring-4', 'ring-amber-400', 'border-amber-400');
+            });
+            const activeBtn = document.getElementById(`btn-icon-${iconKey}`);
+            if (activeBtn) activeBtn.classList.add('ring-4', 'ring-amber-400', 'border-amber-400');
+        }
+
+        // Set Direction Arrow
+        function setArrow(arrowKey) {
+            currentArrow = arrowKey;
+            const container = document.getElementById('sign-arrow-container');
+            container.innerHTML = getArrowSvg(arrowKey, currentTheme);
+
+            // Highlight active arrow button
+            document.querySelectorAll('.arrow-btn').forEach(btn => {
+                btn.classList.remove('ring-4', 'ring-amber-400', 'border-amber-400');
+            });
+            const activeBtn = document.getElementById(`btn-arrow-${arrowKey}`);
+            if (activeBtn) activeBtn.classList.add('ring-4', 'ring-amber-400', 'border-amber-400');
+        }
+
+        // Render updated sign data from inputs
+        function updateSign() {
+            document.getElementById('sign-text-header').innerText = document.getElementById('input-header').value.toUpperCase();
+            document.getElementById('sign-text-main').innerText = document.getElementById('input-main').value.toUpperCase();
+            document.getElementById('sign-text-sub').innerText = document.getElementById('input-sub').value.toUpperCase();
+            document.getElementById('sign-text-law').innerText = document.getElementById('input-law').value;
+        }
+
+        // Launch standard print dialogue configured for layout
+        function printSign() {
+            window.print();
+        }
+
+        // Run setup on load
+        window.onload = init;
+    </script>
+
+</body></html>
